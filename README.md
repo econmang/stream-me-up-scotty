@@ -1,5 +1,4 @@
 # Stream Me Up, Scotty
----
 
 ## Table of Contents
 * [Introduction](#introduction)
