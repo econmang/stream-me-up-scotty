@@ -5,11 +5,6 @@
 
 use tauri::{CustomMenuItem, Menu, MenuItem, Submenu};
 
-#[tauri::command]
-fn say_hi() -> String {
-    "Hello, World".into()
-}
-
 fn main() {
     let quit = CustomMenuItem::new("quit".to_string(), "Quit");
     let close = CustomMenuItem::new("close".to_string(), "Close");
