@@ -17,11 +17,14 @@ They could store their library on a PC and then use this interface to create pro
 This is just a rough outline, so I'm still trying to determine the stack. I would like to use Rust. If the interface becomes web-oriented or is deployed as a service
 as opposed to a local application, I'm hoping to incorporate WASM.
 
-TECH STACK:
+Current thoughts on stack:
+
 Desktop Application:
 MongoDB: Storage of movie information and path to media files
 Tauri: Utilizing Vue3 to create the front-end and Rust for the back-end.
 Note: The host system would need network access to whatever home device contained the films / the local media server
+
+Think I may use this as an opporunity to learn to utilize docker as well.
 
 I may end up creating a web service iteration of this, but that seems to be playing into what free services like Vudu already provide.
 If the desktop application continues at a good pace, I'll consider web hosting and creating a purchasing layer to host people's movie library.
