@@ -20,14 +20,12 @@ as opposed to a local application, I'm hoping to incorporate WASM.
 Current thoughts on stack:
 
 Desktop Application:
-MongoDB: Storage of movie information and path to media files
+MySQL: Contain movie and resource location data.
+MongoDB: Storage of user information, including watch lists and rating history.
 Tauri: Utilizing Vue3 to create the front-end and Rust for the back-end.
 Note: The host system would need network access to whatever home device contained the films / the local media server
 
-Think I may use this as an opporunity to learn to utilize docker as well.
-
-I may end up creating a web service iteration of this, but that seems to be playing into what free services like Vudu already provide.
-If the desktop application continues at a good pace, I'll consider web hosting and creating a purchasing layer to host people's movie library.
+I may end up creating a web service iteration of this; may consider web hosting and creating a purchasing layer to host people's movie library.
 In that case, I'd be interested in attempting to incorporate WASM as part of this project.
 We'll see...
 
