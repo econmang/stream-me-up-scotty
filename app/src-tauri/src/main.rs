@@ -4,8 +4,42 @@
 )]
 
 use tauri::{CustomMenuItem, Menu, MenuItem, Submenu};
+use mysql::*;
+use mysql::prelude::*;
+
+fn get_movie_list() -> std::result::Result<(), Box<dyn std::error::Error>> {
+    // Set up DB Connection
+    let url = "mysql://root:pwd@localhost:3306/scotty";
+    let pool = Pool::new(url)?;
+
+    // Connect to DB
+    let mut conn = pool.get_conn()?;
+
+    // Select movies from the movies table
+    let query_str = r"SELECT M.movieID,
+	   M.movieName,
+       M.movieReleaseYear,
+       MD.movieDesc,
+       MR.movieLocation,
+       MR.movieCoverLocation
+       FROM
+       scotty.tblMovies M
+       INNER JOIN scotty.tblMovieResources MR 
+       ON MR.movieID = M.movieID
+       INNER JOIN scotty.tblMovieDescriptions MD
+       ON MD.movieID = M.movieID";
+    conn.query_iter(query_str)
+        .unwrap()
+        .for_each(|row| {
+            let r:(i32, Option<String>, i32, Option<String>, Option<String>, Option<String>) = from_row(row.unwrap());
+            println!("{}, {}, {}. {}, {}, {}", r.0, r.1.unwrap(), r.2, r.3.unwrap(), r.4.unwrap(), r.5.unwrap());
+        });
+
+    return Ok(());
+}
 
 fn main() {
+    get_movie_list();
     let quit = CustomMenuItem::new("quit".to_string(), "Quit");
     let close = CustomMenuItem::new("close".to_string(), "Close");
     let submenu = Submenu::new("File", Menu::new().add_item(quit).add_item(close));
