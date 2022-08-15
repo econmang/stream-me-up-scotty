@@ -1,6 +1,10 @@
 <template>
   <div class="hello">
     <h1>{{ msg }}</h1>
+	<p>Username:</p>
+	<input type="text" />
+	<p>Password:</p>
+	<input type="password" />
   </div>
 </template>
 

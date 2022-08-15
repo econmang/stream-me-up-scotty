@@ -9,7 +9,7 @@ use mysql::prelude::*;
 
 fn get_movie_list() -> std::result::Result<(), Box<dyn std::error::Error>> {
     // Set up DB Connection
-    let url = "mysql://root:pwd@localhost:3306/scotty";
+    let url = "mysql://root:AcDc16613046334^$@localhost:3306/scotty";
     let pool = Pool::new(url)?;
 
     // Connect to DB
@@ -39,7 +39,13 @@ fn get_movie_list() -> std::result::Result<(), Box<dyn std::error::Error>> {
 }
 
 fn main() {
-    get_movie_list();
+    let result = get_movie_list().unwrap();
+    if result == () {
+
+    }
+    else {
+        println!("AN ERROR HAS OCCURED CONNECTING TO DB");
+    }
     let quit = CustomMenuItem::new("quit".to_string(), "Quit");
     let close = CustomMenuItem::new("close".to_string(), "Close");
     let submenu = Submenu::new("File", Menu::new().add_item(quit).add_item(close));
