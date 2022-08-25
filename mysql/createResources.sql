@@ -1,9 +1,9 @@
-# Drop Tables to Re-Create Database
+-- Drop Tables to Re-Create Database
 DROP TABLE IF EXISTS
 `tblMovies`,
 `tblMovieRatings`;
 
-# Movie Ratings (G, PG, PG-13, etc)
+-- Movie Ratings (G, PG, PG-13, etc)
 CREATE TABLE `tblMovieRatings` (
 	`ratingID` int NOT NULL AUTO_INCREMENT,
     `rating` varchar(6),
@@ -22,9 +22,9 @@ CREATE TABLE `tblMovies` (
   CONSTRAINT `FK_MovieRating_Movies` FOREIGN KEY (`movieRating`) REFERENCES `tblMovieRatings` (`ratingID`)
 );
 
-# Create/Re-create user for application access
+-- Create/Re-create user for application access
 DROP USER IF EXISTS 'beamScotty';
 CREATE USER 'beamScotty'@'%' IDENTIFIED BY 'B3amM3UpScotty^^';
 
-# Grant Access to the scotty database
+-- Grant Access to the scotty database
 GRANT INSERT, UPDATE, DELETE, SELECT, EXECUTE ON scotty.* TO 'beamScotty'@'%';
